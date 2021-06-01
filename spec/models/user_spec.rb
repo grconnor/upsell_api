@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   
-  describ 'Factory' do
+  describe 'Factory' do
     it 'should have a valid Factory' do
       expect(create(:user)).to be_valid
     end
@@ -35,5 +35,9 @@ RSpec.describe User, type: :model do
         it { is_expected.to allow_value(email).for(:email) }
       end
     end
+  end
+
+  describe 'Relations' do
+    it { is_expected.to have_many :orders}
   end
 end
