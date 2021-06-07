@@ -19,16 +19,20 @@ RSpec.describe "GET /api/v1/products", type: :request do
       expect(response_json["products"].count).to eq 3
     end
 
+    it "is expected to return a specific article id" do
+      expect(response_json["products"].first["id"]).to be_integer
+    end
+
     it "is expected to return a specific article name" do
-      expect(response_json["products"].first["name"]).to eq "Private Parking"
+      expect(response_json["products"].second["name"]).to eq "Private Parking"
     end
 
     it "is expected to return a specific article description" do
-      expect(response_json["products"].second["description"]).to eq "Get your own exclusive parking space located behind the building, total privacy!"
+      expect(response_json["products"].third["description"]).to eq "Get your own exclusive parking space located behind the building, total privacy!"
     end
 
-    it "is expected to return a specific article id" do
-      expect(response_json["products"].third["id"]).to be_integer
+    it "is expected to return a specific article price" do
+      expect(response_json["products"].first["price"]).to be_integer
     end
   end
 end
