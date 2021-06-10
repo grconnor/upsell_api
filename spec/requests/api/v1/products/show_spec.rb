@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "GET /api/v1/products", type: :request do
-  let!(:product) { create(:product) }
+  let!(:product) {
+    create(:product)
+  }
 
   describe "successfully" do
     before do

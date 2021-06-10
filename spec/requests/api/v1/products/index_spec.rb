@@ -2,11 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "GET /api/v1/products", type: :request do
   let!(:product) do
-    3.times do
-      create(:product)
+    1.times do
+      create(:product, id: 1, name: "Private Parking", price: 100)
+      create(:product, id: 2, name: "Game Drive")
+      create(:product, id: 3, name: "Day Picnic", description: "Take in the breathtaking views while enjoying a relaxed picnic amongst the reserve inhabitants.")
     end
   end
-  describe "GET /api/v1/products" do
+  describe "successfully" do
     before do
       get '/api/v1/products'
     end
@@ -20,19 +22,19 @@ RSpec.describe "GET /api/v1/products", type: :request do
     end
 
     it "is expected to return a specific article id" do
-      expect(response_json["products"].first["id"]).to be_integer
+      expect(response_json["products"].first["id"]).to eq 1
     end
 
     it "is expected to return a specific article name" do
-      expect(response_json["products"].second["name"]).to eq "Private Parking"
+      expect(response_json["products"].second["name"]).to eq "Game Drive"
     end
 
     it "is expected to return a specific article description" do
-      expect(response_json["products"].third["description"]).to eq "Get your own exclusive parking space located behind the building, total privacy!"
+      expect(response_json["products"].third["description"]).to eq "Take in the breathtaking views while enjoying a relaxed picnic amongst the reserve inhabitants."
     end
 
     it "is expected to return a specific article price" do
-      expect(response_json["products"].first["price"]).to be_integer
+      expect(response_json["products"].first["price"]).to eq 100
     end
   end
 end
