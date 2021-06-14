@@ -9,6 +9,8 @@ gem 'puma', '~> 4.1'
 gem 'rack-cors', require: 'rack/cors'
 gem 'devise_token_auth'
 gem 'active_model_serializers'
+gem 'pry'
+gem 'pry-nav'
 
 
 gem 'bootsnap', '>= 1.4.2', require: false
