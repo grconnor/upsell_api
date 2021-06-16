@@ -4,6 +4,14 @@ RSpec.describe "POST /api/v1/products", type: :request do
   let(:user) { create(:user) }
   let(:credentials) { user.create_new_auth_token }
   let(:headers) { { HTTP_ACCEPT: "application/json" }.merge!(credentials) }
+  let(:image) do
+    {
+      type: "image/png",
+      encoder: "iphone_picture",
+      data: "biudakwblauidbkw=",
+      extension: "png"
+    }
+  end
 
   describe "successfully with valid params" do
     before do
@@ -14,6 +22,7 @@ RSpec.describe "POST /api/v1/products", type: :request do
                name: "Product name",
                description: "Product description",
                price: 150,
+               image: image
              },
            },
            headers: headers
